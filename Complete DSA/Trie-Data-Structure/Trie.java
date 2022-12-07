@@ -36,7 +36,7 @@ public class Trie {
         }
     }
 
-    public boolean search(String word) {
+    public boolean search(String word) { //Time Complexity O(L) "where 'L' is the length of a word"
         Node currentNode = root;
 
         for (int i = 0; i < word.length(); i++) {
