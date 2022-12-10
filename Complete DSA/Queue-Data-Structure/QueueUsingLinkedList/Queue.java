@@ -1,3 +1,5 @@
+package QueueUsingLinkedList;
+
 public class Queue {
 
     private Node front;
@@ -14,7 +16,7 @@ public class Queue {
         }
     }
 
-    public void enqueue(int data) {
+    public void enqueue(int data) { // Runtime Complexity O(1)
         size++;
         Node node = new Node(data);
 
@@ -27,7 +29,7 @@ public class Queue {
         rear = node;
     }
 
-    public int dequeue() {
+    public int dequeue() { // Runtime Complexity O(1)
         if (front == null) throw new RuntimeException("Queue is empty");
 
         int data = front.data;
@@ -36,17 +38,17 @@ public class Queue {
         return data;
     }
 
-    public int peek() {
+    public int peek() { // Runtime Complexity O(1)
         if (front == null) throw new RuntimeException("Queue is empty");
 
         return front.data;
     }
 
-    public int size() {
+    public int size() { // Runtime Complexity O(1)
         return size;
     }
 
-    public boolean isEmpty() {
+    public boolean isEmpty() { // Runtime Complexity O(1)
         return size == 0;
     }
 }
