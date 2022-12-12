@@ -210,16 +210,27 @@ public class BinaryTree {
         return Math.max(leftDiam, rightDiam) + 1;
     }
 
+    public Node lowestCommonAncestor(Node root, int a, int b) {
+        if (root == null) return null;
+        if (root.data == a || root.data == b) return root;
+
+        Node left = lowestCommonAncestor(root.left, a, b);
+        Node right = lowestCommonAncestor(root.right, a, b);
+
+        if (left == null) return right;
+        if (right == null) return left;
+
+        return root;
+    }
+
     Node prev = null;
     Node head = null;
     public void flattenInOrder(Node root) {
         binaryTreeToFlattenDoublyLinkedListInOrder(root);
 
-        Node curr = head;
-
-        while (curr != null) {
-            System.out.print(curr.data + " <-> ");
-            curr = curr.right;
+        while (head != null) {
+            System.out.print(head.data + " <-> ");
+            head = head.right;
         }
 
         System.out.print("null");
@@ -232,7 +243,7 @@ public class BinaryTree {
 
         if (prev == null) head = root;
         else {
-            head.left = prev;
+            root.left = prev;
             prev.right = root;
         }
         prev = root;
