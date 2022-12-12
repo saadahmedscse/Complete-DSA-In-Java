@@ -21,5 +21,8 @@ public class Main {
         //tree.levelOrderLevelWise(root);               // 1 -> 2 3 -> 3 4 6 7 -> 9
         //tree.leftView(root);                          // 1 2 3 9
         //tree.rightView(root);                         // 1 5 7 9
+        //tree.topView(root);                           // 3 2 1 5 7
+        //tree.bottomView(root);                        // 3 9 6 5 7
+        //System.out.println(tree.maxDiameter(root));   // 6 Diameter = {6 -> 4 -> 2 -> 1 -> 5 -> 7}
     }
 }
