@@ -210,6 +210,36 @@ public class BinaryTree {
         return Math.max(leftDiam, rightDiam) + 1;
     }
 
+    Node prev = null;
+    Node head = null;
+    public void flattenInOrder(Node root) {
+        binaryTreeToFlattenDoublyLinkedListInOrder(root);
+
+        Node curr = head;
+
+        while (curr != null) {
+            System.out.print(curr.data + " <-> ");
+            curr = curr.right;
+        }
+
+        System.out.print("null");
+    }
+
+    private void binaryTreeToFlattenDoublyLinkedListInOrder(Node root) {
+        if (root == null) return;
+
+        binaryTreeToFlattenDoublyLinkedListInOrder(root.left);
+
+        if (prev == null) head = root;
+        else {
+            head.left = prev;
+            prev.right = root;
+        }
+        prev = root;
+
+        binaryTreeToFlattenDoublyLinkedListInOrder(root.right);
+    }
+
     public int countNodes(Node root) {
         if (root == null) return 0;
 
