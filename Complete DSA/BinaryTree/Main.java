@@ -23,7 +23,7 @@ public class Main {
         //tree.rightView(root);                         // 1 5 7 9
         //tree.topView(root);                           // 3 2 1 5 7
         //tree.bottomView(root);                        // 3 9 6 5 7
-        //System.out.println(tree.maxDiameter(root));   // 6 Diameter = {6 -> 4 -> 2 -> 1 -> 5 -> 7}
+        //System.out.println(tree.maxDiameter(root));   // 6 Diameter = {9 -> 4 -> 2 -> 1 -> 5 -> 7}
         //tree.flattenInOrder(root);                    // 3 <-> 2 <-> 9 <-> 4 <-> 1 <-> 6 <-> 5 <-> 7 <-> null
         //tree.lowestCommonAncestor(root, 9, 3)         // returns Node 2
         //tree.verticalOrder(root);                     // 3 2 9 1 4 6 5 7
