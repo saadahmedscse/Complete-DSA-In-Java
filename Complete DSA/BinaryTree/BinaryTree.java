@@ -80,6 +80,49 @@ public class BinaryTree {
         }
     }
 
+    static class VerticalPair {
+        int horizontalDirection;
+        LinkedList<Node> list;
+
+        public VerticalPair(int horizontalDirection, LinkedList<Node> list) {
+            this.horizontalDirection = horizontalDirection;
+            this.list = list;
+        }
+    }
+
+    public void verticalOrder(Node root) {
+        if (root == null) return;
+
+        Queue<Pair> q = new LinkedList<>();
+        Map<Integer, ArrayList<Node>> map = new TreeMap<>();
+
+        q.add(new Pair(0, root));
+
+        while (!q.isEmpty()) {
+            Pair pair = q.poll();
+
+            if (!map.containsKey(pair.horizontalDirection)) {
+                ArrayList<Node> list = new ArrayList<>();
+                map.put(pair.horizontalDirection, list);
+            }
+            map.get(pair.horizontalDirection).add(pair.node);
+
+            if (pair.node.left != null) {
+                q.add(new Pair(pair.horizontalDirection - 1, pair.node.left));
+            }
+
+            if (pair.node.right != null) {
+                q.add(new Pair(pair.horizontalDirection + 1, pair.node.right));
+            }
+        }
+
+        for (Map.Entry<Integer, ArrayList<Node>> me : map.entrySet()) {
+            for (Node n : me.getValue()) {
+                System.out.print(n.data + " ");
+            }
+        }
+    }
+
     public void leftView(Node root) {
         if (root == null) return;
 
