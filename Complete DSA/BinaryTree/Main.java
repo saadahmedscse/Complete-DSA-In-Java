@@ -24,5 +24,6 @@ public class Main {
         //tree.topView(root);                           // 3 2 1 5 7
         //tree.bottomView(root);                        // 3 9 6 5 7
         //System.out.println(tree.maxDiameter(root));   // 6 Diameter = {6 -> 4 -> 2 -> 1 -> 5 -> 7}
+        //tree.flattenInOrder(root);                    // 3 <-> 2 <-> 9 <-> 4 <-> 1 <-> 6 <-> 5 <-> 7 <-> null
     }
 }
