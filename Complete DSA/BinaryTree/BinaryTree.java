@@ -1,5 +1,4 @@
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class BinaryTree {
 
@@ -119,10 +118,96 @@ public class BinaryTree {
         }
     }
 
+    static class Pair {
+        int horizontalDirection;
+        Node node;
+
+        public Pair(int horizontalDirection, Node node) {
+            this.horizontalDirection = horizontalDirection;
+            this.node = node;
+        }
+    }
+
+    public void topView(Node root) {
+        if (root == null) return;
+
+        Queue<Pair> q = new LinkedList<>();
+        Map<Integer, Integer> map = new TreeMap<>(); //Using TreeMap for ascending order
+
+        q.add(new Pair(0, root));
+
+        while (!q.isEmpty()) {
+            Pair currentPair = q.poll();
+
+            if (!map.containsKey(currentPair.horizontalDirection)) {
+                map.put(currentPair.horizontalDirection, currentPair.node.data);
+            }
+
+            if (currentPair.node.left != null) {
+                q.add(new Pair(currentPair.horizontalDirection - 1, currentPair.node.left));
+            }
+
+            if (currentPair.node.right != null) {
+                q.add(new Pair(currentPair.horizontalDirection + 1, currentPair.node.right));
+            }
+        }
+
+        for (int key : map.keySet()) {
+            System.out.print(map.get(key) + " ");
+        }
+    }
+
+    public void bottomView(Node root) {
+        if (root == null) return;
+
+        Queue<Pair> q = new LinkedList<>();
+        Map<Integer, Integer> map = new TreeMap<>();
+
+        q.add(new Pair(0, root));
+
+        while (!q.isEmpty()) {
+            Pair currentPair = q.poll();
+
+            map.put(currentPair.horizontalDirection, currentPair.node.data);
+
+            if (currentPair.node.left != null) {
+                q.add(new Pair(currentPair.horizontalDirection - 1, currentPair.node.left));
+            }
+
+            if (currentPair.node.right != null) {
+                q.add(new Pair(currentPair.horizontalDirection + 1, currentPair.node.right));
+            }
+        }
+
+        for (Map.Entry<Integer, Integer> me : map.entrySet()) {
+            System.out.print(me.getValue() + " ");
+        }
+    }
+
     public int height(Node root) {
         if (root == null) return 0;
 
         return Math.max(height(root.left), height(root.right)) + 1;
+    }
+
+    private int maxDiam = Integer.MIN_VALUE;
+    public int maxDiameter(Node root) {
+        if (root == null) return 0;
+
+        calculateMaxDiameter(root);
+
+        return maxDiam;
+    }
+
+    private int calculateMaxDiameter(Node root) {
+        if (root == null) return 0;
+
+        int leftDiam = calculateMaxDiameter(root.left);
+        int rightDiam = calculateMaxDiameter(root.right);
+
+        maxDiam = Math.max(maxDiam, leftDiam + rightDiam + 1);
+
+        return Math.max(leftDiam, rightDiam) + 1;
     }
 
     public int countNodes(Node root) {
