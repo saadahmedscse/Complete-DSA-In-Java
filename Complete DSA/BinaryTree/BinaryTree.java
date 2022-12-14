@@ -227,6 +227,74 @@ public class BinaryTree {
         }
     }
 
+    public void floorAndCeil(Node root, int key) { // Time Complexity O(logN) Space Complexity O(1)
+        if (root == null) return;
+
+        int floor = Integer.MIN_VALUE;
+        int ceil = Integer.MAX_VALUE;
+
+        while (root != null) {
+            if (key < root.data) {
+                ceil = Math.min(ceil, root.data);
+                root = root.left;
+            } else {
+                floor = Math.max(floor, root.data);
+                root = root.right;
+            }
+        }
+
+        System.out.println("Floor: " + floor);
+        System.out.println("Ceil: " + ceil);
+    }
+
+    public void floorAndCeilArrayList(Node root, int key) {
+        if (root == null) return;
+
+        List<Integer> res = new ArrayList<>();
+        pFACA(root, res);
+
+        int floor = res.get(0);
+        int ceil = res.get(res.size() - 1);
+
+        //Searching Floor and Ceil with O(n) time complexity
+//        for (int i = res.size() - 1; i >= 0; i--) {
+//            if (res.get(i) < key) {
+//                floor = Math.max(floor, res.get(i));
+//            }
+//            if (res.get(i) > key) {
+//                ceil = Math.min(ceil, res.get(i));
+//            }
+//        }
+
+        //Searching Floor and Ceil with O(logN) time complexity
+        int s = 0, e = res.size() - 1;
+
+        while (s <= e) {
+            int mid = s + (e - s) / 2;
+            int midVal = res.get(mid);
+
+            if (midVal > key) {
+                e = mid - 1;
+                ceil = Math.min(ceil, midVal);
+            }
+            else {
+                s = mid + 1;
+                floor = Math.max(floor, midVal);
+            }
+        }
+
+        System.out.println("Floor: " + floor);
+        System.out.println("Ceil: " + ceil);
+    }
+
+    private void pFACA(Node root, List<Integer> list) {
+        if (root == null) return;
+
+        pFACA(root.left, list);
+        list.add(root.data);
+        pFACA(root.right, list);
+    }
+
     public int height(Node root) {
         if (root == null) return 0;
 
