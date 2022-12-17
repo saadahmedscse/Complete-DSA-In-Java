@@ -136,4 +136,8 @@ public class Graph {
 
         System.out.println("Shortest Path: " + distance[dest]);
     }
+
+    public void printGraph() {
+        System.out.println(adj);
+    }
 }
