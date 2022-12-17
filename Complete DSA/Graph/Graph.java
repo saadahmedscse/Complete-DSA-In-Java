@@ -42,4 +42,38 @@ public class Graph {
 
         System.out.println(result);
     }
+
+    public void bfsTraversalFullGraph() {
+        boolean[] visited = new boolean[v];
+        List<Integer> result = new ArrayList<>();
+
+        for (int i = 0; i < v; i++) {
+            if (!visited[i]) {
+                bfsTraversal(i, visited, result);
+            }
+        }
+
+        System.out.println(result);
+    }
+
+    private void bfsTraversal(int source, boolean[] visited, List<Integer> result) {
+        Queue<Integer> q = new LinkedList<>();
+
+        q.offer(source);
+        visited[source] = true;
+
+        while (!q.isEmpty()) {
+            int curr = q.poll();
+            result.add(curr);
+
+            for (int i = 0; i < adj.get(curr).size(); i++) {
+                int neighbor = adj.get(curr).get(i);
+
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    q.offer(neighbor);
+                }
+            }
+        }
+    }
 }
