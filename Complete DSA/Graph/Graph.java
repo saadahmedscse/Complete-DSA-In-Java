@@ -108,4 +108,32 @@ public class Graph {
             }
         }
     }
+
+    public void shortestPath(int source, int dest) {
+        Queue<Integer> q = new LinkedList<>();
+        boolean[] visited = new boolean[v];
+        int[] distance = new int[v];
+
+        q.offer(source);
+        visited[source] = true;
+
+        while (!q.isEmpty()) {
+            int curr = q.poll();
+
+            for (int i = 0; i < adj.get(curr).size(); i++) {
+                int neighbor = adj.get(curr).get(i);
+
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    distance[neighbor] = distance[curr] + 1;
+
+                    q.offer(neighbor);
+
+                    if (neighbor == dest) break;
+                }
+            }
+        }
+
+        System.out.println("Shortest Path: " + distance[dest]);
+    }
 }
