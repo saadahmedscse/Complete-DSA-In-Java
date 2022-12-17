@@ -108,4 +108,8 @@ public class Graph {
             }
         }
     }
+
+    public void printGraph() {
+        System.out.println(adj);
+    }
 }
