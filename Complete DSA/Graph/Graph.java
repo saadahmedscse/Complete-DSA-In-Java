@@ -76,4 +76,36 @@ public class Graph {
             }
         }
     }
+
+    public void totalConnectedComponents() {
+        boolean[] visited = new boolean[v];
+        int components = 0;
+
+        for (int i = 0; i < v; i++) {
+            if (!visited[i]) {
+                components++;
+                bfsTraversal(i, visited);
+            }
+        }
+
+        System.out.println("Total Connected Components: " + components);
+    }
+
+    public void bfsTraversal(int source, boolean[] visited) {
+        Queue<Integer> q = new LinkedList<>();
+        q.offer(source);
+        visited[source] = true;
+
+        while (!q.isEmpty()) {
+            int curr = q.poll();
+
+            for (int i = 0; i < adj.get(curr).size(); i++) {
+                int neighbor = adj.get(curr).get(i);
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    q.add(neighbor);
+                }
+            }
+        }
+    }
 }
