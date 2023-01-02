@@ -23,4 +23,26 @@ public class SelectionSort {
             }
         }
     }
+
+    public static void selectionSortDesc(int[] nums) { // TC O(N ^ 2) ___ SC O(1)
+        int n = nums.length;
+
+        for (int i = 0; i < n; i++) {
+            int max = i;
+            int j = i;
+
+            while (j < n) {
+                if (nums[j] > nums[max]) {
+                    max = j;
+                }
+                j++;
+            }
+
+            if (i != max) {
+                int temp = nums[i];
+                nums[i] = nums[max];
+                nums[max] = temp;
+            }
+        }
+    }
 }
