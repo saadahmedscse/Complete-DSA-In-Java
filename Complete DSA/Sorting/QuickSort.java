@@ -2,7 +2,7 @@ package Sorting;
 
 public class QuickSort {
     
-    public static void quickSort(int[] nums) { // TC O(NLogN) ___ SC O(1)
+    public static void quickSort(int[] nums) { // TC Best Case O(NLogN) Worst Case O(N ^ 2) ___ SC O(1)
         quickSortHelper(nums, 0, nums.length - 1);
     }
 
