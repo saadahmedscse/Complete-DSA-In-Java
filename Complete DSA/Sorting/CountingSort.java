@@ -2,7 +2,7 @@ package Sorting;
 
 public class CountingSort {
     
-    public static void countingSort(int[] nums) { // TC O(N) ___ SC O(K
+    public static void countingSort(int[] nums) { // TC O(N) ___ SC O(K)
         int min = nums[0];
         int max = nums[0];
 
