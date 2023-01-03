@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RadixSort {
 
-    // Radix Sort / Bucket Sor
+    // Radix Sort / Bucket Sort
     // TC O(N + K) in Best Case
     // TC O(N) in Average Case
     // TC O(N ^ 2) Worst Case
