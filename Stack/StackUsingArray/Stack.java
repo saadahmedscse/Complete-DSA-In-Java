@@ -3,7 +3,7 @@ package Stack.StackUsingArray;
 public class Stack <T> {
 
     /**
-     * Custom Stack class implemented
+     * Custom Stack class implemented using Array
      * Author: Saad Ahmed
      * Date: 14 Jan, 2023
      * Tried to implement most common functions of the in build class
