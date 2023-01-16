@@ -122,7 +122,7 @@ public class PriorityQueue<T extends Comparable<T>> {
 
     /**
      * Time Complexity [toString()] function:
-     * O(1)
+     * O(N)
      */
 
     public String toString() {
