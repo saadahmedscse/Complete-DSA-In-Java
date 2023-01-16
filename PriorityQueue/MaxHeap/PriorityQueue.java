@@ -3,7 +3,7 @@ package PriorityQueue.MaxHeap;
 public class PriorityQueue<T extends Comparable<T>> {
 
     /**
-     * Custom PriorityQueue class implemented
+     * Custom MaxHeap PriorityQueue class implemented
      * Author: Saad Ahmed
      * Date: 16 Jan, 2023
      * Tried to implement most common functions of the in build class
