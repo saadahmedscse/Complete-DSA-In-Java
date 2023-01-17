@@ -42,8 +42,8 @@ public class Heapify {
         int leftChild = i * 2 + 1;
         int rightChild = i * 2 + 2;
 
-        if (leftChild >= 0 && leftChild < N && array[leftChild] > array[largest]) largest = leftChild;
-        if (rightChild >= 0 && rightChild < N && array[rightChild] > array[largest]) largest = rightChild;
+        if (leftChild < N && array[leftChild] > array[largest]) largest = leftChild;
+        if (rightChild < N && array[rightChild] > array[largest]) largest = rightChild;
 
         if (largest != i) {
             swap(array, i, largest);
