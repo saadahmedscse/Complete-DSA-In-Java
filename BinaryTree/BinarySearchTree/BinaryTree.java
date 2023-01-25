@@ -10,7 +10,7 @@ public class BinaryTree {
 
     private Node root;
 
-    private class Node {
+    public class Node {
         int data;
         Node left;
         Node right;
@@ -105,7 +105,42 @@ public class BinaryTree {
 
         return searchUsingRecursion(root.right, data);
     }
-    
+
+    /**
+     * Time Complexity [deleteNode()] function:
+     * Best Case O(LogN)
+     * Average Case O(LogN)
+     * Worst Case O(N)
+     */
+
+    public Node deleteNode(Node root, int data) {
+        if (root == null) return null;
+
+        if (root.data > data) root.left = deleteNode(root.left, data);
+        else if (root.data < data) root.right = deleteNode(root.right, data);
+        else {
+            if (root.left == null) return root.right;
+            else if (root.right == null) return root.left;
+
+            int min = minValue(root.right);
+            root.data = min;
+            root.right = deleteNode(root.right, min);
+        }
+
+        return root;
+    }
+
+    private int minValue(Node root) {
+        int min = root.data;
+
+        while (root != null) {
+            min = root.data;
+            root = root.left;
+        }
+
+        return min;
+    }
+
     /**
      * Time Complexity [inOrderTraverse()] function:
      * O(N)
