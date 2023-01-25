@@ -62,7 +62,7 @@ public class BinaryTree {
             if (root.data == data) return true;
 
             if (root.data > data) root = root.left;
-            else root = root.right;
+            else if (root.data < data) root = root.right;
         }
 
         return false;
