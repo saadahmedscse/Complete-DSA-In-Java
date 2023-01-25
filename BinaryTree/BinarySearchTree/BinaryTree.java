@@ -80,15 +80,12 @@ public class BinaryTree {
     }
 
     private Node insertUsingRecursion(Node root, int data) {
-        Node newNode = new Node(data);
-
         if (root == null) {
-            root = newNode;
-            return root;
+            return new Node(data);
         }
 
         if (root.data > data) root.left = insertUsingRecursion(root.left, data);
-        else root.right = insertUsingRecursion(root.right, data);
+        else if (root.data < data) root.right = insertUsingRecursion(root.right, data);
 
         return root;
     }
