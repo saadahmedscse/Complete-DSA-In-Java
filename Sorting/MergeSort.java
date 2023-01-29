@@ -10,7 +10,7 @@ public class MergeSort {
     /**
      * Complexity [sort()] function:
      * Time Complexity:     O(NLogN)
-     * Space Complexity:    O(1)
+     * Space Complexity:    O(N)
      */
 
     public static void sort(int[] array) {
