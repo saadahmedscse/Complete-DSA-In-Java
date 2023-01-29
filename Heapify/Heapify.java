@@ -17,7 +17,7 @@ public class Heapify {
     public static void buildHeap(int[] array) {
         int N = array.length;
 
-        int startIndex = N / 2 - 1; // Last non-leaf node
+        int startIndex = N / 2 - 1; // First non-leaf node
 
         if (startIndex >= 0) {
             for (int i = startIndex; i >= 0; i--) {
