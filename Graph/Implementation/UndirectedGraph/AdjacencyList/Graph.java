@@ -1,4 +1,4 @@
-package Graph.Implementation.UndirectionalGraph.AdjacencyList;
+package Graph.Implementation.UndirectedGraph.AdjacencyList;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Graph {
 
     /**
-     * Undirectional Graph Implementation using Adjacency List
+     * Undirected Graph Implementation using Adjacency List
      * Author: Saad Ahmed
      * Date: 30 Jan, 2023
      */
