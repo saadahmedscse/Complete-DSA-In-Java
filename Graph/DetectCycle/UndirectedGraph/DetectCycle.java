@@ -33,7 +33,6 @@ public class DetectCycle {
 
         for (int neighbor : graph.get(src)) {
             if (!visited[neighbor]) {
-                visited[neighbor] = true;
                 if (dfs(graph, src, neighbor, visited)) return true;
             } else {
                 if (neighbor != parent) return true;
