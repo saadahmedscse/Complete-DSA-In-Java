@@ -64,7 +64,7 @@ public class BFSTraversal {
         System.out.println("Total Components: " + totalComponents);
     }
 
-    public static void traverse(List<List<Integer>> graph, int src, boolean[] visited, List<List<Integer>> result) {
+    private static void traverse(List<List<Integer>> graph, int src, boolean[] visited, List<List<Integer>> result) {
         Queue<Integer> q = new LinkedList<>();
         List<Integer> current = new ArrayList<>();
 
