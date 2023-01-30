@@ -14,8 +14,9 @@ public class BFSTraversal {
      */
 
     /**
-     * Time Complexity [traverse()] function:
-     * O(V)
+     * Complexity [traverse()] function:
+     * Time Complexity:  O(V + E)
+     * Space Complexity: O(V)
      */
 
     public static void traverse(List<List<Integer>> graph, int src, int V) {
@@ -42,8 +43,9 @@ public class BFSTraversal {
     }
 
     /**
-     * Time Complexity [traverseWholeGraph()] function:
-     * O(V)
+     * Complexity [traverseWholeGraph()] function:
+     * Time Complexity:  O(V + E)
+     * Space Complexity: O(V)
      */
 
     public static void traverseWholeGraph(List<List<Integer>> graph, int V) {
