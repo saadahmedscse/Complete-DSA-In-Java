@@ -13,6 +13,11 @@ public class BFSTraversal {
      * Date: 30 Jan, 2023
      */
 
+    /**
+     * Time Complexity [traverse()] function:
+     * O(V)
+     */
+
     public static void traverse(List<List<Integer>> graph, int src, int V) {
         List<Integer> result = new ArrayList<>();
         boolean[] visited = new boolean[V];
@@ -35,6 +40,11 @@ public class BFSTraversal {
 
         System.out.println(result);
     }
+
+    /**
+     * Time Complexity [traverseWholeGraph()] function:
+     * O(V)
+     */
 
     public static void traverseWholeGraph(List<List<Integer>> graph, int V) {
         boolean[] visited = new boolean[V];
