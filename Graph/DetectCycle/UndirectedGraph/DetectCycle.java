@@ -5,7 +5,7 @@ import java.util.*;
 public class DetectCycle {
 
     /**
-     * Graph DFS Traversal to detect Cycle
+     * DFS Traversal to detect Cycle in an Undirected Graph
      * Author: Saad Ahmed
      * Date: 30 Jan, 2023
      */
