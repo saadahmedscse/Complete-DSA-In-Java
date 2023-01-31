@@ -24,8 +24,8 @@ public class MinimumSpanningTree {
 
     /**
      * Complexity [solve()] function:
-     * Time Complexity:  O(V^2)
-     * Space Complexity: O(V)
+     * Time Complexity:  O(ELogE)
+     * Space Complexity: O(E + V)
      */
 
     public static void solve(List<List<Graph.Node>> graph, int V) {
