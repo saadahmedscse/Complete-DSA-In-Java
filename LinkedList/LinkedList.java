@@ -10,13 +10,13 @@ public class LinkedList <T> {
      */
 
     private Node<T> head;
-    private Node<T> rear;
-    private Node<T> secondLast;
+    private Node<T> tail;
     private int size = 0;
 
-    private class Node <T> {
+    private static class Node <T> {
         T data;
         Node<T> next;
+        Node<T> prev;
 
         public Node(T data) {
             this.data = data;
@@ -33,13 +33,13 @@ public class LinkedList <T> {
         size++;
 
         if (head == null) {
-            head = rear = newNode;
+            head = tail = newNode;
             return;
         }
 
-        rear.next = newNode;
-        secondLast = rear;
-        rear = rear.next;
+        tail.next = newNode;
+        newNode.prev = tail;
+        tail = tail.next;
     }
 
     /**
@@ -50,6 +50,7 @@ public class LinkedList <T> {
     public void addFirst(T data) {
         Node<T> newNode = new Node<>(data);
         newNode.next = head;
+        head.prev = newNode;
         head = newNode;
         size++;
     }
@@ -81,7 +82,9 @@ public class LinkedList <T> {
         Node<T> newNode = new Node<>(data);
         Node<T> next = currentNode.next;
         currentNode.next = newNode;
+        newNode.prev = currentNode;
         newNode.next = next;
+        next.prev = newNode;
 
         size++;
     }
@@ -113,6 +116,7 @@ public class LinkedList <T> {
     public void removeFirst() {
         if (headIsNull()) throw new ArrayIndexOutOfBoundsException("List is empty");
         head = head.next;
+        if (head != null) head.prev = null;
         size--;
     }
 
@@ -126,12 +130,12 @@ public class LinkedList <T> {
 
         if (size == 1) {
             size--;
-            head = null;
+            head = tail = null;
             return;
         }
 
-        rear = secondLast;
-        secondLast.next = null;
+        tail = tail.prev;
+        tail.next = null;
 
         size--;
     }
@@ -143,11 +147,14 @@ public class LinkedList <T> {
 
     public void remove(int index) {
         if (headIsNull()) throw new ArrayIndexOutOfBoundsException("List is empty");
-
-        size--;
+        if (index < 0 || index >= size) throw new ArrayIndexOutOfBoundsException("Array index out of bound " + index);
 
         if (index == 0) {
-            head = head.next;
+            removeFirst();
+            return;
+        }
+        if (index == size - 1) {
+            removeLast();
             return;
         }
 
@@ -156,6 +163,8 @@ public class LinkedList <T> {
         while (index-- > 1) currentNode = currentNode.next;
 
         currentNode.next = currentNode.next.next;
+        currentNode.next.prev = currentNode;
+        size--;
     }
 
     /**
